@@ -1,0 +1,16 @@
+name: Generate ASCII art
+on: push
+jobs:
+  generate_ascii_art:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout the repository
+        uses: actions/checkout@v6
+
+      - name: list the files in the repository
+        run: ls -ltra
+      
+      - name: executing shell script to generate ASCII art
+        run: ./ascii-script.sh
+
+     
