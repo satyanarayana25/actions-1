@@ -4,13 +4,15 @@ jobs:
   first_job:
     runs-on: ubuntu-latest
     steps:
-      - name: Hello world action step
-        run: echo "Hello world!"
-      - name: Hello world action step 2
-        run: echo "This Sk9 projects!"
-      - name: list the files in the repository
-        run: ls -la
+
       - name: checkout the repository
         uses: actions/checkout@v6
       - name: read the README file
-        run: cat README.md
+        run: |
+             cat README.md
+             ls -ltra
+             echo " Hello chinna!"
+      - name: Gerate ASCII art
+        run: |
+             cowsay -f dragon "Welcome to GitHub Actions!" >> dragon.txt
+             
