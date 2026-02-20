@@ -10,5 +10,7 @@ jobs:
         run: echo "This Sk9 projects!"
       - name: list the files in the repository
         run: ls -la
+      - name: checkout the repository
+        uses: actions/checkout@v6
       - name: read the README file
         run: cat README.md
