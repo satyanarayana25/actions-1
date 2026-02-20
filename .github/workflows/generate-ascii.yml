@@ -1,0 +1,24 @@
+name: Generate ASCII art
+on: push
+jobs:
+  generate_ascii_art:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout the repository
+        uses: actions/checkout@v6
+      
+      - name: install cowsay
+        run: sudo apt-get install cowsay -y
+      
+      - name: Gerate ASCII art
+        run: |
+             cowsay -f dragon "Welcome to GitHub Actions!" >> dragon.txt
+      
+      - name: Test file content
+        run: grep -i "dragon" dragon.txt
+      
+      - name: display the generated ASCII art
+        run: cat dragon.txt
+
+      - name: list the files in the repository
+        run: ls -ltra
