@@ -15,7 +15,7 @@ jobs:
              cowsay -f dragon "Welcome to GitHub Actions!" >> dragon.txt
       
       - name: Test file content
-        run: grep -i "dragon" dragon.txt
+        run: grep -i "Welcom" dragon.txt
       
       - name: display the generated ASCII art
         run: cat dragon.txt
