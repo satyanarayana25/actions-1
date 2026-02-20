@@ -1,0 +1,14 @@
+name: My first workflow
+on: push
+jobs:
+  first_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hello world action step
+        run: echo "Hello world!"
+      - name: Hello world action step 2
+        run: echo "This Sk9 projects!"
+      - name: list the files in the repository
+        run: ls -la
+      - name: read the README file
+        run: cat README.md
