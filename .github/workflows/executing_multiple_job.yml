@@ -10,15 +10,21 @@ jobs:
         run: sudo apt-get install cowsay -y
       - name: execut cowsay cmd
         run: cowsay -f dragon "Welcome to GitHub Actions! chinna" >> dragon.txt
-      - name: sleep for 30 seconds
-        run: sleep 30
+      
+      - name: upload the dragon.txt file as an artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: dragon-artifact
+          path: dragon.txt
 
   test_job:
       needs: buld_job
       runs-on: ubuntu-latest
       steps:
-        - name: sleep for 10 seconds
-          run: sleep 10
+        - name: download the artifact
+          uses: actions/download-artifact@v3
+          with:
+            name: dragon-artifact
         - name: Test file content
           run: grep -i "chinna" dragon.txt
     
@@ -27,6 +33,10 @@ jobs:
     needs: test_job
     runs-on: ubuntu-latest
     steps:
+      - name: download the artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: dragon-artifact
       - name: Read file
         run: cat dragon.txt
       - name: Deploy step
