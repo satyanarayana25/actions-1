@@ -12,7 +12,7 @@ jobs:
         run: cowsay -f dragon "Welcome to GitHub Actions! chinna" >> dragon.txt
       
       - name: upload the dragon.txt file as an artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v5
         with:
           name: dragon-artifact
           path: dragon.txt
@@ -22,7 +22,7 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - name: download the artifact
-          uses: actions/download-artifact@v3
+          uses: actions/download-artifact@v5
           with:
             name: dragon-artifact
         - name: Test file content
@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: download the artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v5
         with:
           name: dragon-artifact
       - name: Read file
