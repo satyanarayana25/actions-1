@@ -1,0 +1,31 @@
+name: Executing_multiple_job
+
+on: push
+
+jobs:
+  buld_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: install cowsay
+        run: sudo apt-get install cowsay -y
+      - name: execut cowsay cmd
+        run: cowsay -f dragon "Welcome to GitHub Actions! chinna" >> dragon.txt
+      - name: sleep for 30 seconds
+        run: sleep 30
+
+  test_job:
+      runs-on: ubuntu-latest
+      steps:
+        - name: sleep for 10 seconds
+          run: sleep 10
+        - name: Test file content
+          run: grep -i "chinna" dragon.txt
+    
+
+  deploy_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Read file
+        run: cat dragon.txt
+      - name: Deploy step
+        run: echo "Deploying the application..."
