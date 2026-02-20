@@ -1,4 +1,4 @@
-name: Generate ASCII art
+name: ASCII auto art
 on: push
 jobs:
   generate_ascii_art:
